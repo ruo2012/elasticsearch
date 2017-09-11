@@ -51,12 +51,12 @@ namespace ElasticSearchASPApplication.Models
         public string Email { get; set; }
     }
 
-    public class LoginViewModel
+    public class SearchViewModel
     {
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "Search")]
         [EmailAddress]
-        public string Email { get; set; }
+        public string Search { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

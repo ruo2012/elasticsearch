@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.Owin;
 using Owin;
 
+
 [assembly: OwinStartup(typeof(ElasticSearchASPApplication.Startup))]
 
 namespace ElasticSearchASPApplication
@@ -13,6 +14,6 @@ namespace ElasticSearchASPApplication
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-        }
+           }
     }
 }
