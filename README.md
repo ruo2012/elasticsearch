@@ -1,4 +1,4 @@
-# elasticsearch
+# Elasticsearch application
 .NET application for simple full text search
 
 # Run the application
