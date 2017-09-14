@@ -50,20 +50,5 @@ namespace ElasticSearchASPApplication.Services
             Console.WriteLine("TextSearch", product);
             return product;
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="query"></param>
-        public void TextSearchByType(string query)
-        {
-            var result = client.Search<Product>(x => x.Query(q => q
-                                                            .Type(c => c.Name("smartphone").
-                                                             Value<Product>()
-                                                               ))
-            );
-           Console.WriteLine("TextSearchByType", result);
-     
-        }
     }
 }
