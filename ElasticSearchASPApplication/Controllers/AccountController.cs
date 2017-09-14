@@ -72,7 +72,7 @@ namespace ElasticSearchASPApplication.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            var indexService = new ElasticIndexService();
+            var indexService = new IndexService();
             indexService.CreateIndex();
             return View();
         }

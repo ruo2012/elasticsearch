@@ -10,7 +10,7 @@ namespace ElasticSearchTest.cs
     [TestClass]
     public class TextSearch
     {
-        IElasticClient client = ElasticConfig.GetClient();
+        IElasticClient client = Config.GetClient();
 
         [TestMethod]
         public void CreateIndex()

@@ -7,14 +7,14 @@ namespace ElasticSearchASPApplication.Services
     /// <summary>
     /// Class for instantiating a client and having it connect to the server
     /// </summary>
-    public static class ElasticConfig
+    public static class Config
     {
         public static string IndexName
         {
             get { return ConfigurationManager.AppSettings["indexName"]; }
         }
 
-        public static string ElastisearchUrl
+        public static string URL
         {
             get { return ConfigurationManager.AppSettings["elastisearchUrl"]; }
         }
@@ -25,9 +25,9 @@ namespace ElasticSearchASPApplication.Services
         /// <returns></returns>
         public static IElasticClient GetClient()
         {
-            var node = new Uri("http://localhost:9200"); // http://localhost:9200
+            var node = new Uri(Config.URL); // http://localhost:9200
             var settings = new ConnectionSettings(node);
-            settings.DefaultIndex("company"); //product
+            settings.DefaultIndex(Config.IndexName); //product
             return new ElasticClient(settings);
         }
     }

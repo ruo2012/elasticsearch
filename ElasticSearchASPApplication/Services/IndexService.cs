@@ -7,7 +7,7 @@ using ElasticSearchASPApplication.Models;
 
 namespace ElasticSearchASPApplication.Services
 {
-    public class ElasticIndexService
+    public class IndexService
     {
         public static Uri EsNode;
         public static ConnectionSettings EsConfig;
@@ -16,10 +16,10 @@ namespace ElasticSearchASPApplication.Services
 
         private readonly IElasticClient client;
 
-        public ElasticIndexService()
+        public IndexService()
         {
             indexResponseList = new List<IndexResponse>();
-            client = ElasticSearchASPApplication.Services.ElasticConfig.GetClient();
+            client = ElasticSearchASPApplication.Services.Config.GetClient();
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace ElasticSearchASPApplication.Services
             };
 
             //create index for each product
-            if (!client.IndexExists(ElasticConfig.IndexName).Exists)
+            if (!client.IndexExists(Config.IndexName).Exists)
             {
                 foreach (var product in productList)
                 {

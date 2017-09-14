@@ -15,7 +15,7 @@ namespace ElasticSearchASPApplication.Services
 
         public SearchService()
         {
-            client = ElasticConfig.GetClient();
+            client = Config.GetClient();
         }
 
         /// <summary>

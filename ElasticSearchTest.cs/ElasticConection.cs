@@ -11,7 +11,7 @@ namespace ElasticSearchTest.cs
         [TestMethod]
         public void CreateConnection()
         {
-           IElasticClient client = ElasticConfig.GetClient();
+           IElasticClient client = Config.GetClient();
            Assert.IsNotNull(client);
         }
     }
