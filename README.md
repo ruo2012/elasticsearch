@@ -7,10 +7,11 @@
 
 # Sample Queries
 
-Searching all products
+**Searching all products**
 GET /company/product/_search/
 Using query DSL for more usefull search
 In order to make a more useful search request we also need to supply a request body with a query.
+```
 POST /company/product/_search/
 {
     "query": {
@@ -19,8 +20,10 @@ POST /company/product/_search/
         }
       }
 }
-Fine tuning query string queries
+```
+**Fine tuning query string queries**
 Retrieve documents with the name of “Huawei”
+```
 POST /company/product/_search/
 {
     "query": {
@@ -32,7 +35,9 @@ POST /company/product/_search/
         }
       }
 }
-Searching for multiple products
+```
+**Searching for multiple products**
+```
 POST /company/product/_search/
 {
     "query": {
@@ -41,7 +46,9 @@ POST /company/product/_search/
           }
       }
 }
-Filtering
+```
+**Filtering**
+```
 POST /company/product/_search/
 {
    "query": {
@@ -59,8 +66,11 @@ POST /company/product/_search/
       }
    }
 }
+```
+**Sorting**
 
-Sorting
+```
+Sort all products
 POST /company/product/_search/
 {
    "query": {
@@ -70,6 +80,9 @@ POST /company/product/_search/
       "price": "asc"
    }
 }
+
+Sort product with a name "Samsung"
+
 POST /company/product/_search/
 {
    "query": {
@@ -81,8 +94,11 @@ POST /company/product/_search/
       "price": "asc"
    }
 }
-Pagination
+```
+
+**Pagination**
 ElasticSearch returns the first ten hits by default. You can change it via size parameter.
+```
 POST /company/product/_search/
 {
    "query": {
@@ -93,14 +109,18 @@ POST /company/product/_search/
    },
    "size": 12
 }
+```
 
-Retrieving only parts of documents
+**Retrieving only parts of documents**
 Add  _source property to the query. Following query retrieves only “name” of all products. It is also possible to retrieve multiple fields as well using "_source": ["property1", "property2"]
+```
+Query:
 POST /company/product/_search/
 {
   "_source": "name"
 }
 
+Result:
 {
             "_index": "company",
             "_type": "product",
@@ -110,3 +130,4 @@ POST /company/product/_search/
                "name": "iPhone7"
             }
 }
+```
