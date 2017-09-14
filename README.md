@@ -8,6 +8,7 @@
 # Sample Queries
 
 **Searching all products**
+
 GET /company/product/_search/
 Using query DSL for more usefull search
 In order to make a more useful search request we also need to supply a request body with a query.
@@ -22,6 +23,7 @@ POST /company/product/_search/
 }
 ```
 **Fine tuning query string queries**
+
 Retrieve documents with the name of “Huawei”
 ```
 POST /company/product/_search/
@@ -37,6 +39,7 @@ POST /company/product/_search/
 }
 ```
 **Searching for multiple products**
+
 ```
 POST /company/product/_search/
 {
@@ -48,6 +51,7 @@ POST /company/product/_search/
 }
 ```
 **Filtering**
+
 ```
 POST /company/product/_search/
 {
@@ -97,6 +101,7 @@ POST /company/product/_search/
 ```
 
 **Pagination**
+
 ElasticSearch returns the first ten hits by default. You can change it via size parameter.
 ```
 POST /company/product/_search/
@@ -112,6 +117,7 @@ POST /company/product/_search/
 ```
 
 **Retrieving only parts of documents**
+
 Add  _source property to the query. Following query retrieves only “name” of all products. It is also possible to retrieve multiple fields as well using "_source": ["property1", "property2"]
 ```
 Query:
