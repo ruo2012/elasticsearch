@@ -1,6 +1,8 @@
 ﻿using ElasticSearchASPApplication.Models;
 using System.Linq;
 using Nest;
+using System;
+using System.Collections.Generic;
 
 namespace ElasticSearchASPApplication.Services
 {
@@ -16,19 +18,52 @@ namespace ElasticSearchASPApplication.Services
             client = ElasticConfig.GetClient();
         }
 
+        /// <summary>
+        /// TODO
+        /// Autocomplete functionality of search box
+        /// </summary>
+        /// <param name="query"></param>
         public void Autocomplete(string query)
         {
             throw new System.NotImplementedException();
         }
-
-        public void TextSearch(string query)
+        /// <summary>
+        /// /{index}/{type}/{id}
+        /// /teknosa/smartphone/_search and the index "teknosa" and type "smartphone"
+        /// </summary>
+        /// <param name="query"></param>
+        public IReadOnlyCollection<Product> TextSearch(string query)
         {
-            var result = client.Search<Product>(x => x .Query(q => q
-                                                            .MultiMatch(mp => mp
-                                                                .Query(query)
-                                                                    .Fields(f => f
-                                                                        .Fields(f1 => f1.Name, f2 => f2.Price, f3 => f3.Currency))))
+            var searchResponse = client.Search<Product>(s => s
+              .From(0)
+              .Size(10)
+              .Query(q => q
+                   .Match(m => m
+                      .Field(f => f.Name)
+                      .Query(query)
+                   )
+              )
+             );
+
+            var product = (IReadOnlyCollection<Product>) searchResponse.Documents;
+
+            Console.WriteLine("TextSearch", product);
+            return product;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="query"></param>
+        public void TextSearchByType(string query)
+        {
+            var result = client.Search<Product>(x => x.Query(q => q
+                                                            .Type(c => c.Name("smartphone").
+                                                             Value<Product>()
+                                                               ))
             );
+           Console.WriteLine("TextSearchByType", result);
+     
         }
     }
 }

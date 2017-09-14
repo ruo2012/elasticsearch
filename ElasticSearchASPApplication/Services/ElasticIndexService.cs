@@ -12,11 +12,13 @@ namespace ElasticSearchASPApplication.Services
         public static Uri EsNode;
         public static ConnectionSettings EsConfig;
         public static ElasticClient EsClient;
+        public List<IndexResponse> indexResponseList;
 
         private readonly IElasticClient client;
 
         public ElasticIndexService()
         {
+            indexResponseList = new List<IndexResponse>();
             client = ElasticSearchASPApplication.Services.ElasticConfig.GetClient();
         }
 
@@ -26,31 +28,25 @@ namespace ElasticSearchASPApplication.Services
         /// </summary>
         public void CreateIndex()
         {
-            var settings = new IndexSettings { NumberOfReplicas = 1, NumberOfShards = 2 };
-
-            var indexConfig = new IndexState
+            //create dummy data
+            List<Product> productList = new List<Product>
             {
-                Settings = settings
+                new Product{ Name = "iPhone6s", Price = 3000, Currency = "TL" },
+                new Product{ Name = "iPhone6", Price = 2500, Currency = "TL" },
+                new Product{ Name = "iPhone7", Price = 4500, Currency = "TL" },
+                new Product{ Name = "Samsung Galaxy S8", Price = 3400, Currency = "TL" },
+                new Product{ Name = "Samsung Galaxy S7", Price = 2900, Currency = "TL" }
             };
 
-            if (!client.IndexExists("product").Exists)
+            //create index for each product
+            if (!client.IndexExists(ElasticConfig.IndexName).Exists)
             {
-                client.CreateIndex("product", c => c
-                    .InitializeUsing(indexConfig)
-                        .Mappings(m => m
-                            .Map<Product>(mp => mp
-                                .AutoMap())));
+                foreach (var product in productList)
+                {
+                   client.Index(product);
+                }
             }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="path">C:\Users\xxx\source\repos\ElasticSearchRepo\elasticsearch-nest-webapi-angularjs\elasticsearch-nest-webapi-angularjs\data </param>
-        /// <param name="maxItems">maxItems</param>
-        private void BulkIndex(string path, int maxItems)
-        {
-           
+          
         }
     }
 }

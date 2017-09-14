@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ElasticSearchASPApplication.Services
 {
@@ -16,7 +12,7 @@ namespace ElasticSearchASPApplication.Services
         /// The search method will execute the multi match query against user input.
         /// </summary>
         /// <param name="text">user input</param>
-        void TextSearch(string query);
+        IReadOnlyCollection<T> TextSearch(string query);
         
         /// <summary>
         ///TODO: Autocomplete 

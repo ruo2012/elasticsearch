@@ -9,8 +9,8 @@ namespace ElasticSearchASPApplication.Models
     {
         public string Name { set; get; }
 
-        public string Price { set; get; }
+        public int Price { set; get; }
 
-        public int Currency { set; get; }
+        public string Currency { set; get; }
     }
 }
