@@ -6,8 +6,8 @@
 2. Run the application on Visual Studio.
 
 ## Update for .NET application
-1.      Queries are in ElasticSearchASPApplication.Services namespace. Current implementation only calls SimpleSearch function.
-2.      Search results are not shown in ASP.NET view. Run/Debug testcases instead.
+* Queries are in ElasticSearchASPApplication.Services namespace. Current implementation only calls SimpleSearch function.
+* Search results are not shown in ASP.NET view. Run/Debug testcases instead.
 
 # Sample Queries
 
@@ -60,6 +60,7 @@ POST /company/product/_search/
 **Filtering**
 
 ```
+Filter for specific value:
 POST /company/product/_search/
 {
    "query": {
@@ -74,6 +75,30 @@ POST /company/product/_search/
                "price": 2900
             }
          }
+      }
+   }
+}
+
+Filter with a range:
+POST /company/product/_search/
+{
+   "query": {
+      "bool": {
+         "must": {
+            "match": {
+               "name": "Samsung"
+            }
+         },
+         "filter": [
+            {
+               "range": {
+                  "price": {
+                     "gte": 1000,
+                     "lte": 4000
+                  }
+               }
+            }
+         ]
       }
    }
 }
