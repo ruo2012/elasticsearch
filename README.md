@@ -7,7 +7,7 @@
 
 ## Update for .NET application
 * Queries are in ElasticSearchASPApplication.Services namespace. Current implementation only calls SimpleSearch function.
-* Search results are not shown in ASP.NET view. Run/Debug testcases instead.
+* Search results are not shown in ASP.NET view. Run/Debug test cases instead.
 
 # Sample Queries
 
@@ -160,12 +160,12 @@ POST /company/product/_search/
 
 Result:
 {
-            "_index": "company",
-            "_type": "product",
-            "_id": "AV57gFjUQ8Qv2Iw4gRgt",
-            "_score": 1,
-            "_source": {
-               "name": "iPhone7"
-            }
+    "_index": "company",
+    "_type": "product",
+    "_id": "AV57gFjUQ8Qv2Iw4gRgt",
+    "_score": 1,
+    "_source": {
+      "name": "iPhone7"
+    }
 }
 ```
