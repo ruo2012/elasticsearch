@@ -1,9 +1,13 @@
 # Elasticsearch application
-.NET application for simple full text search
+.NET application for simple full text search with sample queries. Java project will be added soon.
 
-# Run the application
+# Run the .NET application
 1. Download Elasticsearch and follow instructions from https://www.elastic.co/downloads/elasticsearch in order to run bin\elasticsearch.bat on Windows.
 2. Run the application on Visual Studio.
+
+## Update for .NET application
+1.      Queries are in ElasticSearchASPApplication.Services namespace. Current implementation only calls SimpleSearch function.
+2.      Search results are not shown in ASP.NET view. Run/Debug testcases instead.
 
 # Sample Queries
 
