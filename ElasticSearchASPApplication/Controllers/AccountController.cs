@@ -85,7 +85,7 @@ namespace ElasticSearchASPApplication.Controllers
         public ActionResult Login(SearchViewModel model, string returnUrl)
         {
             var service = new SearchService();
-            service.TextSearch(model.Search);
+            service.SimpleSearch(model.Search);
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }

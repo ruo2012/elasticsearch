@@ -25,9 +25,9 @@ namespace ElasticSearchASPApplication.Services
         /// <returns></returns>
         public static IElasticClient GetClient()
         {
-            var node = new Uri(Config.URL); // http://localhost:9200
+            var node = new Uri("http://localhost:9200"); //Config.URL
             var settings = new ConnectionSettings(node);
-            settings.DefaultIndex(Config.IndexName); //product
+            settings.DefaultIndex("company"); // Config.IndexName
             return new ElasticClient(settings);
         }
     }

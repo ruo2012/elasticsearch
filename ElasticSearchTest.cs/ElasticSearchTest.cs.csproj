@@ -57,9 +57,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TextSearch.cs" />
+    <Compile Include="TestSearchService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ElasticConection.cs" />
+    <Compile Include="TestConnection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

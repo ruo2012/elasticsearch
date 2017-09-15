@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace ElasticSearchTest.cs
 {
     [TestClass]
-    public class TextSearch
+    public class TestSearchService
     {
         IElasticClient client = Config.GetClient();
 
@@ -36,11 +36,25 @@ namespace ElasticSearchTest.cs
         }
 
         [TestMethod]
-        public void FullTextSearch()
+        public void SimpleSearch()
         {
             SearchService service = new SearchService();
-            Assert.AreEqual(0, service.TextSearch("iPhone").Count);
-            Assert.AreEqual(2,service.TextSearch("Huawei").Count);
+            Assert.AreEqual(0, service.SimpleSearch("iPhone").Count);
+            Assert.AreEqual(4,service.SimpleSearch("Huawei").Count);
         }
+
+        [TestMethod]
+        public void Filter()
+        {
+            SearchService service = new SearchService();
+            Assert.AreEqual(4, service.Filter("Samsung").Count);
+        }
+
+        [TestMethod]
+        public void Sort()
+        {
+            throw new NotImplementedException();
+        }
+        
     }
 }
